@@ -28,7 +28,7 @@
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | shippng_charge_id  | integer    | null: false                    |
-| region_id          | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | days_of_ship_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
@@ -63,6 +63,7 @@
 | address          | string     | null: false                    |
 | building         | string     |                                |
 | telephone_number | string     | null: false                    |
+| order            | references | null: false, foreign_key: true |
 
 
 ### Association
