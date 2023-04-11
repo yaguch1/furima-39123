@@ -57,6 +57,21 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too long (maximum is 128 characters)')
       end
+      it 'passwordが半角英語のみでは登録できない' do
+        @user.password = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
+      end
+      it 'passwordが半角数字のみでは登録できない' do
+        @user.password = '000000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
+      end
+      it 'passwordが全角入力では登録できない' do
+        @user.password = 'ＡＡＡＡＡ１'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
+      end
       it 'kanji_seiが空では登録できない' do
         @user.kanji_sei = ''
         @user.kana_sei = ''
@@ -69,6 +84,16 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Kanji mei 全角文字を使用してください')
       end
+      it 'kanji_seiが漢字・平仮名・片仮名以外だと登録出来ない' do
+        @user.kanji_sei = 'aA1'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Kanji sei 全角文字を使用してください')
+      end
+      it 'kanji_meiが漢字・平仮名・片仮名以外だと登録出来ない' do
+        @user.kanji_mei = 'aA1'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Kanji mei 全角文字を使用してください')
+      end
       it 'kana_seiが空では登録できない' do
         @user.kana_sei = ''
         @user.valid?
@@ -76,6 +101,16 @@ RSpec.describe User, type: :model do
       end
       it 'kana_meiが空では登録できない' do
         @user.kana_mei = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Kana mei 全角カナを使用してください')
+      end
+      it 'kana_seiが片仮名以外だと登録出来ない' do
+        @user.kana_sei = 'aA1'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Kana sei 全角カナを使用してください')
+      end
+      it 'kana_meiが片仮名以外だと登録出来ない' do
+        @user.kana_mei = 'aA1'
         @user.valid?
         expect(@user.errors.full_messages).to include('Kana mei 全角カナを使用してください')
       end
