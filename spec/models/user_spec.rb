@@ -55,29 +55,29 @@ RSpec.describe User, type: :model do
         @user.password = Faker::Internet.password(min_length: 129)
         @user.password_confirmation = @user.password
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is too long (maximum is 128 characters)")
+        expect(@user.errors.full_messages).to include('Password is too long (maximum is 128 characters)')
       end
       it 'kanji_seiが空では登録できない' do
         @user.kanji_sei = ''
         @user.kana_sei = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kanji sei 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include('Kanji sei 全角文字を使用してください')
       end
       it 'kanji_meiが空では登録できない' do
         @user.kanji_mei = ''
         @user.kana_mei = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kanji mei 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include('Kanji mei 全角文字を使用してください')
       end
       it 'kana_seiが空では登録できない' do
         @user.kana_sei = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana sei 全角カナを使用してください")
+        expect(@user.errors.full_messages).to include('Kana sei 全角カナを使用してください')
       end
       it 'kana_meiが空では登録できない' do
         @user.kana_mei = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana mei 全角カナを使用してください")
+        expect(@user.errors.full_messages).to include('Kana mei 全角カナを使用してください')
       end
       it 'date_of_birthが空では登録できない' do
         @user.date_of_birth = ''
