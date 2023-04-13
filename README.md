@@ -27,9 +27,9 @@
 | explanation        | text       | null: false                    |
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
-| shippng_charge_id  | integer    | null: false                    |
+| shipping_id        | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
-| days_of_ship_id    | integer    | null: false                    |
+| shippingday_id     | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
