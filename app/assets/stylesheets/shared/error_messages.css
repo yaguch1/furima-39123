@@ -5,7 +5,11 @@
 }
 
 .error-message {
-  font-size: 1.3vw;
   list-style: circle;
   color: rgb(182, 48, 0);
+  padding-top: 10px;
+  padding-left: 110px;
+  margin-bottom: 5vh;
+  font-size: 20px;
+  line-height: 22px;
 }
