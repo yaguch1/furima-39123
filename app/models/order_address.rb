@@ -2,6 +2,7 @@ class OrderAddress
 
   include ActiveModel::Model
   attr_accessor :post_code, :prefecture_id, :city, :address, :building, :telephone_number, :user_id, :item_id
+  attr_accessor :token
 
   # ここにバリデーションの処理を書く
 
@@ -15,6 +16,7 @@ class OrderAddress
     validates :telephone_number, format: {with: /\A[0-9]{11}\z/, message: "is invalid. Input only number"}
   end
     validates :telephone_number,length: { minimum: 10, message: "is too short." }
+    validates :token, presence: true
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
