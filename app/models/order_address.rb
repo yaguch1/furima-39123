@@ -4,8 +4,6 @@ class OrderAddress
   attr_accessor :post_code, :prefecture_id, :city, :address, :building, :telephone_number, :user_id, :item_id
   attr_accessor :token
 
-  # ここにバリデーションの処理を書く
-
   with_options presence: true do
     validates :item_id
     validates :user_id
