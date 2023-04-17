@@ -7,7 +7,6 @@ class Item < ApplicationRecord
   belongs_to :shippingday
   has_one_attached :image
   belongs_to :user
-  has_one :order, dependent: :destroy
 
     #空の投稿を保存できないようにする
     validates :image, :item_name, :explanation, presence: true
