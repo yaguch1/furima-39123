@@ -11,13 +11,13 @@ class Item < ApplicationRecord
 
     #空の投稿を保存できないようにする
     validates :image, :item_name, :explanation, presence: true
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "Out of setting range" }
-    validates :price, numericality: { only_integer: true, message: "Half-width number." }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "が範囲外です" }
+    validates :price, numericality: { only_integer: true, message: "は半角数字で入力してください" }
 
     #ジャンルの選択が「---」の時は保存できないようにする
-    validates :category_id, numericality: { other_than: 1 , message: "can't be blank"} 
-    validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"} 
-    validates :shipping_id, numericality: { other_than: 1 , message: "can't be blank"} 
-    validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"} 
-    validates :shippingday_id, numericality: { other_than: 1 , message: "can't be blank"} 
+    validates :category_id, numericality: { other_than: 1 , message: "が選択されていません"} 
+    validates :condition_id, numericality: { other_than: 1 , message: "が選択されていません"} 
+    validates :shipping_id, numericality: { other_than: 1 , message: "が選択されていません"} 
+    validates :prefecture_id, numericality: { other_than: 1 , message: "が選択されていません"} 
+    validates :shippingday_id, numericality: { other_than: 1 , message: "が選択されていません"} 
 end
